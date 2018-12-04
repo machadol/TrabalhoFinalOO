@@ -5,19 +5,24 @@
  */
 package geradordeformulario;
 
+import formulario.Questionario;
+
 /**
  *
  * @author lucas
  */
 public class MenuPrincipal extends javax.swing.JFrame
-{
-
+{   
+    Questionario q;
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal()
     {
+        this.q = new Questionario();
         initComponents();
+        setResizable(false);
+        txtDesc.setLineWrap(true);
     }
 
     /**
@@ -120,7 +125,13 @@ public class MenuPrincipal extends javax.swing.JFrame
         FrameOpcaoQuestao obj = new FrameOpcaoQuestao();
         obj.setVisible(true);
     }//GEN-LAST:event_btnCriarActionPerformed
-
+    
+    public void getTituloDescricao()
+    {   
+        q.setTitulo(txtTitulo.getText());
+        q.setDescricao(txtDesc.getText());
+    }
+    
     /**
      * @param args the command line arguments
      */
