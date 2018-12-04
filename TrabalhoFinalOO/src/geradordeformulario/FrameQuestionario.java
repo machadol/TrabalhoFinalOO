@@ -6,6 +6,7 @@
 package geradordeformulario;
 
 import formulario.Lista;
+import formulario.Questionario;
 
 /**
  *
@@ -13,13 +14,22 @@ import formulario.Lista;
  */
 public class FrameQuestionario extends javax.swing.JFrame
 {
+    private Questionario q;
     private int pos = 50;
     /**
      * Creates new form FrameQuestionario
      */
     public FrameQuestionario()
     {
+        this.q = new Questionario();
+        txtTitulo.setText(q.getTitulo());
+        txtDesc.setText(q.getDescricao());
         initComponents();
+    }
+
+    FrameQuestionario(Questionario q)
+    {
+        this.q = q;
     }
 
     /**
@@ -33,8 +43,8 @@ public class FrameQuestionario extends javax.swing.JFrame
     {
 
         btnAdddQuestao = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        txtEnun = new javax.swing.JLabel();
+        txtTitulo = new javax.swing.JLabel();
+        txtDesc = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,8 +57,8 @@ public class FrameQuestionario extends javax.swing.JFrame
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Questionário");
+        txtTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        txtTitulo.setText("Questionário");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -56,14 +66,15 @@ public class FrameQuestionario extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAdddQuestao)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtTitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAdddQuestao))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 42, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(txtEnun, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,10 +82,10 @@ public class FrameQuestionario extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdddQuestao)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(txtEnun, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(219, Short.MAX_VALUE))
+                    .addComponent(txtTitulo))
+                .addGap(2, 2, 2)
+                .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(252, Short.MAX_VALUE))
         );
 
         pack();
@@ -88,7 +99,7 @@ public class FrameQuestionario extends javax.swing.JFrame
     
     public void exportarQuestao(Lista l)
     {   
-        txtEnun.setText(l.getEnunciado());
+        //txtEnun.setText(l.getEnunciado());
     }
     /**
      * @param args the command line arguments
@@ -137,8 +148,8 @@ public class FrameQuestionario extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdddQuestao;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel txtEnun;
+    private javax.swing.JLabel txtDesc;
+    private javax.swing.JLabel txtTitulo;
     // End of variables declaration//GEN-END:variables
 }
 

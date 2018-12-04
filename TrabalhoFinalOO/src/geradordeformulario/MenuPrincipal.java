@@ -7,6 +7,7 @@ package geradordeformulario;
 
 import formulario.Questionario;
 
+
 /**
  *
  * @author lucas
@@ -14,6 +15,7 @@ import formulario.Questionario;
 public class MenuPrincipal extends javax.swing.JFrame
 {   
     Questionario q;
+        
     /**
      * Creates new form MenuPrincipal
      */
@@ -122,8 +124,9 @@ public class MenuPrincipal extends javax.swing.JFrame
 
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCriarActionPerformed
     {//GEN-HEADEREND:event_btnCriarActionPerformed
-        FrameOpcaoQuestao obj = new FrameOpcaoQuestao();
+        FrameOpcaoQuestao obj = new FrameOpcaoQuestao(q);
         obj.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnCriarActionPerformed
     
     public void getTituloDescricao()

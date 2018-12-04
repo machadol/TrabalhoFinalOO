@@ -6,6 +6,7 @@
 package geradordeformulario;
 
 import formulario.Lista;
+import formulario.Questionario;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -15,15 +16,24 @@ import javax.swing.JTextField;
  */
 public class FrameLista extends javax.swing.JFrame
 {
+    protected Questionario q;
+    protected Lista l;
     private int numItem = 1;
     private int pos = 80;
     /**
      * Creates new form FrameLista
      */
     public FrameLista()
-    {
+    {   
+        this.q = new Questionario();
+        this.l = new Lista();
         initComponents();
         setResizable(false);
+    }
+
+    FrameLista(Questionario q)
+    {
+        this.q = q;
     }
 
     /**
@@ -68,6 +78,14 @@ public class FrameLista extends javax.swing.JFrame
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Enunciado");
 
+        txtEnunciado.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtEnunciadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,18 +125,25 @@ public class FrameLista extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnAddItemActionPerformed
         addNumItem();
         addTxtItem();
-        
     }//GEN-LAST:event_btnAddItemActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-        Lista obj = new Lista();
-        obj.setEnunciado(txtEnunciado.getText());
-        FrameQuestionario frm = new FrameQuestionario();
-        frm.exportarQuestao(obj);
-        frm.repaint();
+//        Lista obj = new Lista();
+//        FrameQuestionario frm = new FrameQuestionario();
+//        obj.setEnunciado(txtEnunciado.getText());
+//        frm.exportarQuestao(obj);
+//        dispose();
+        FrameOpcaoQuestao frm;
+        frm = new FrameOpcaoQuestao(q);
+        frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtEnunciadoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtEnunciadoActionPerformed
+    {//GEN-HEADEREND:event_txtEnunciadoActionPerformed
+        l = q.CriarQuestaoLista(txtEnunciado.getText());
+    }//GEN-LAST:event_txtEnunciadoActionPerformed
         
     private void addNumItem()
     {
@@ -141,6 +166,8 @@ public class FrameLista extends javax.swing.JFrame
         txt.setSize(100,29);
         txt.setLocation(45, pos - 20);
         getContentPane().add(txt);
+        l.InsereItem(txt.getText());
+        q.SalvaLista(l);
         initComponents();
         
     }

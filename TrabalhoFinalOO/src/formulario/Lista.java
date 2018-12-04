@@ -16,12 +16,11 @@ public class Lista extends Questao
         this.itemList = itemList;
     }
     
-    protected void InsereItem(char letra, String texto)
+    public void InsereItem( String texto)
     {
         Item i;
         i = new Item();
         
-        i.setLetra(letra);
         i.setTexto(texto);
       
         itemList.add(i);

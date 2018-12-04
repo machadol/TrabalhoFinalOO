@@ -38,9 +38,9 @@ public class Questionario
         return l;
     }
     
-    public void InsereItemLista(Lista l, char letra, String txt)
+    public void InsereItemLista(Lista l, String txt)
     {
-        l.InsereItem(letra, txt);
+        l.InsereItem( txt);
     }
     
     public void ImprimeLista(Lista l)
@@ -68,9 +68,9 @@ public class Questionario
         return a;
     }
     
-    public void InsereItemAlternativa(Lista a, char letra, String txt)
+    public void InsereItemAlternativa(Lista a, String txt)
     {
-        a.InsereItem(letra, txt);
+        a.InsereItem(txt);
     }
     
     public void ImprimeAlternativa(Lista a)
@@ -100,7 +100,7 @@ public class Questionario
     
     public void InsereItemOpcional(Lista o, char letra, String txt)
     {
-        o.InsereItem(letra, txt);
+        o.InsereItem(txt);
     }
     
     public void ImprimeOpcional(Lista o)

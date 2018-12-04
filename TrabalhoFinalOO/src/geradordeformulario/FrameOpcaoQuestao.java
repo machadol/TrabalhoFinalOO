@@ -5,20 +5,29 @@
  */
 package geradordeformulario;
 
+import formulario.Questionario;
+
 /**
  *
  * @author lucas
  */
 public class FrameOpcaoQuestao extends javax.swing.JFrame
 {
+    Questionario q;
 
     /**
      * Creates new form FrameOpcaoQuestao
      */
     public FrameOpcaoQuestao()
     {
+        this.q = new Questionario();
         initComponents();
         setResizable(false);
+    }
+
+    FrameOpcaoQuestao(Questionario q)
+    {
+        this.q = q;
     }
 
     /**
@@ -136,14 +145,14 @@ public class FrameOpcaoQuestao extends javax.swing.JFrame
 
     private void btnSelectListaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSelectListaActionPerformed
     {//GEN-HEADEREND:event_btnSelectListaActionPerformed
-        FrameLista obj = new FrameLista();
+        FrameLista obj = new FrameLista(q);
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSelectListaActionPerformed
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnFinalizarActionPerformed
     {//GEN-HEADEREND:event_btnFinalizarActionPerformed
-        FrameQuestionario obj = new FrameQuestionario();
+        FrameQuestionario obj = new FrameQuestionario(q);
         obj.setVisible(true);
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
