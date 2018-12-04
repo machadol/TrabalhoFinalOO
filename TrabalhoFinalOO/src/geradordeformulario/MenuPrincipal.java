@@ -14,7 +14,7 @@ import formulario.Questionario;
  */
 public class MenuPrincipal extends javax.swing.JFrame
 {   
-    Questionario q;
+    public Questionario q;
         
     /**
      * Creates new form MenuPrincipal
@@ -39,16 +39,30 @@ public class MenuPrincipal extends javax.swing.JFrame
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         txtTitulo = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        lblDesc = new javax.swing.JLabel();
         btnCriar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDesc = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,13 +74,13 @@ public class MenuPrincipal extends javax.swing.JFrame
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Título");
+        lblTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblTitulo.setText("Título");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setText("Descrição");
+        lblDesc.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblDesc.setText("Descrição");
 
-        btnCriar.setText("Criar");
+        btnCriar.setText("Criar Questionário");
         btnCriar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -79,6 +93,15 @@ public class MenuPrincipal extends javax.swing.JFrame
         txtDesc.setRows(5);
         jScrollPane1.setViewportView(txtDesc);
 
+        jButton1.setText("Adicionar Questão");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,32 +109,36 @@ public class MenuPrincipal extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTitulo)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 472, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCriar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addComponent(txtTitulo)
-                            .addComponent(jLabel2)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitulo)
+                            .addComponent(lblDesc))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(lblDesc)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCriar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCriar)
+                    .addComponent(jButton1))
+                .addContainerGap())
         );
 
         pack();
@@ -124,15 +151,30 @@ public class MenuPrincipal extends javax.swing.JFrame
 
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCriarActionPerformed
     {//GEN-HEADEREND:event_btnCriarActionPerformed
-        FrameOpcaoQuestao obj = new FrameOpcaoQuestao(q);
+        FrameOpQuestao obj = new FrameOpQuestao();
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCriarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public Questionario getQ()
+    {
+        return q;
+    }
+
+    public void setQ(Questionario q)
+    {
+        this.q = q;
+    }
     
     public void getTituloDescricao()
     {   
-        q.setTitulo(txtTitulo.getText());
-        q.setDescricao(txtDesc.getText());
+        this.q.setTitulo(txtTitulo.getText());
+        this.q.setDescricao(txtDesc.getText());
     }
     
     /**
@@ -182,11 +224,16 @@ public class MenuPrincipal extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblDesc;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextArea txtDesc;
     private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables

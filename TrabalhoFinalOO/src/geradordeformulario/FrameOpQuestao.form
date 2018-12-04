@@ -24,23 +24,23 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnFinalizar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="btnSelectLista" min="-2" pref="112" max="-2" attributes="0"/>
-                                  <Component id="btnSelectAberta" min="-2" pref="112" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="btnLista" min="-2" pref="112" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnSelectAlternativa" max="32767" attributes="0"/>
-                                  <Component id="btnSelectOpcional" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="btnOpcional" min="-2" pref="112" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="btnAberta" min="-2" pref="112" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnAlternativa" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -56,17 +56,15 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnSelectAberta" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnSelectAlternativa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAberta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAlternativa" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnSelectLista" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnSelectOpcional" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnOpcional" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnLista" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnFinalizar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -80,41 +78,33 @@
         <Property name="text" type="java.lang.String" value="Selecione o tipo de quest&#xe3;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSelectAberta">
+    <Component class="javax.swing.JButton" name="btnAberta">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aberta"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSelectAbertaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbertaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSelectAlternativa">
+    <Component class="javax.swing.JButton" name="btnAlternativa">
       <Properties>
         <Property name="text" type="java.lang.String" value="Alternativa"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSelectLista">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Lista"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSelectListaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnSelectOpcional">
+    <Component class="javax.swing.JButton" name="btnOpcional">
       <Properties>
         <Property name="text" type="java.lang.String" value="Opcional"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSelectOpcionalActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOpcionalActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnFinalizar">
+    <Component class="javax.swing.JButton" name="btnLista">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Finalizar"/>
+        <Property name="text" type="java.lang.String" value="Lista"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFinalizarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
