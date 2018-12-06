@@ -5,22 +5,21 @@
  */
 package GUI;
 
-
 /**
  *
  * @author lucas
  */
-public class jifQuestionarioFinal extends javax.swing.JInternalFrame
+public class jifAberta extends javax.swing.JInternalFrame
 {
+
     /**
-     * Creates new form jifQuestionarioFinal
+     * Creates new form jifAberta
      */
-    public jifQuestionarioFinal()
+    public jifAberta()
     {
         initComponents();
     }
-        
-        
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,42 +30,23 @@ public class jifQuestionarioFinal extends javax.swing.JInternalFrame
     private void initComponents()
     {
 
-        jTitulo = new javax.swing.JLabel();
-
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
-        setTitle("Questionário");
-
-        jTitulo.setText("jLabel1");
+        setTitle("Questão Lista");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jTitulo)
-                .addContainerGap(321, Short.MAX_VALUE))
+            .addGap(0, 440, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTitulo)
-                .addContainerGap(247, Short.MAX_VALUE))
+            .addGap(0, 233, Short.MAX_VALUE)
         );
 
-        setBounds(50, 50, 400, 300);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jTitulo;
     // End of variables declaration//GEN-END:variables
-
-    void recebeTitulo(String titulo)
-    {
-        jTitulo.setText(titulo);
-    }
 }

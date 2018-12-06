@@ -28,6 +28,16 @@ public class Questionario
         this.descricao = descricao;
     }
     
+    public ArrayList<Questao> getArrayListQ()
+    {
+        return q;
+    }
+
+    public void setArrayListQ(ArrayList<Questao> q)
+    {
+        this.q = q;
+    }
+/*    
     // Lista
     
     public Lista CriarQuestaoLista(String enun)
@@ -155,4 +165,7 @@ public class Questionario
             System.out.println(q.get(i));
         }
     }
+*/
+
+
 }   
