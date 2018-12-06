@@ -50,6 +50,7 @@ public class jifTituloDescricao extends javax.swing.JInternalFrame
         jLabel1.setText("Descrição");
 
         ftaDescricao.setColumns(20);
+        ftaDescricao.setLineWrap(true);
         ftaDescricao.setRows(5);
         jScrollPane1.setViewportView(ftaDescricao);
 

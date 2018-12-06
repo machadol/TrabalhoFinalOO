@@ -2,7 +2,7 @@ package formulario;
 
 public class Aberta extends Questao
 {
-    private boolean tamResposta;
+    private boolean tamResposta; // TRUE = Longa False = Curta
 
     public boolean getTamResposta()
     {

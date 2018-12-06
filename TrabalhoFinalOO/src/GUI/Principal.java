@@ -1,20 +1,23 @@
 package GUI;
 
+import formulario.Aberta;
 import formulario.Lista;
 import formulario.Questao;
+import formulario.Questionario;
 import java.util.ArrayList;
 
 public class Principal extends javax.swing.JFrame
 {
-//    Questionario q;
     ArrayList<Questao> questoes= new ArrayList<>();
     
+    Questionario questionario = new Questionario();
     Lista lista = new Lista();
+    Aberta aberta = new Aberta();
     
     jifTituloDescricao objTD;
-    jifQuestionario objQ;
-    jifLista objLista;
-
+    jifQuestionario    objQ;
+    jifLista  objLista;
+    jifAberta objAberta;
     public Principal()
     {
         initComponents();
@@ -31,8 +34,8 @@ public class Principal extends javax.swing.JFrame
         jMenuNovoQuestionario = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jInserirQuestao = new javax.swing.JMenu();
-        jAlternativa = new javax.swing.JMenuItem();
         jAberta = new javax.swing.JMenuItem();
+        jAlternativa = new javax.swing.JMenuItem();
         jLista = new javax.swing.JMenuItem();
         jOpcional = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
@@ -67,10 +70,7 @@ public class Principal extends javax.swing.JFrame
 
         jInserirQuestao.setText("Inserir Questões");
 
-        jAlternativa.setText("Aberta");
-        jInserirQuestao.add(jAlternativa);
-
-        jAberta.setText("Alternativa");
+        jAberta.setText("Aberta");
         jAberta.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -79,6 +79,16 @@ public class Principal extends javax.swing.JFrame
             }
         });
         jInserirQuestao.add(jAberta);
+
+        jAlternativa.setText("Alternativa");
+        jAlternativa.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jAlternativaActionPerformed(evt);
+            }
+        });
+        jInserirQuestao.add(jAlternativa);
 
         jLista.setText("Lista");
         jLista.addActionListener(new java.awt.event.ActionListener()
@@ -143,9 +153,7 @@ public class Principal extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jMenuVisualizarQuestionarioActionPerformed
         objQ = new jifQuestionario();
         jdpPrincipal.add(objQ);
-        objQ.recebeTituloDescricao(objTD.getTitulo(), objTD.getDescricao());
-        objQ.criaLista(objLista.getLista());
-        objQ.criaLista(lista);
+        enviaQuestionario();
         objQ.setVisible(true);        
     }//GEN-LAST:event_jMenuVisualizarQuestionarioActionPerformed
 
@@ -155,6 +163,7 @@ public class Principal extends javax.swing.JFrame
         jdpPrincipal.add(objLista);
         objLista.setVisible(true);
         this.lista = objLista.getLista();
+        questoes.add(lista);
     }//GEN-LAST:event_jListaActionPerformed
     
     private void jOpcionalActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jOpcionalActionPerformed
@@ -162,14 +171,27 @@ public class Principal extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_jOpcionalActionPerformed
 
+    private void jAlternativaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jAlternativaActionPerformed
+    {//GEN-HEADEREND:event_jAlternativaActionPerformed
+
+    }//GEN-LAST:event_jAlternativaActionPerformed
+
     private void jAbertaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jAbertaActionPerformed
     {//GEN-HEADEREND:event_jAbertaActionPerformed
-        // TODO add your handling code here:
+        objAberta = new jifAberta();
+        jdpPrincipal.add(objAberta);
+        objAberta.setVisible(true);
+        this.aberta = objAberta.getAberta();
+        questoes.add(aberta);
     }//GEN-LAST:event_jAbertaActionPerformed
     
-    private void salvaQuestaoLista()
+    
+    private void enviaQuestionario()
     {
-        
+        questionario.setArrayListQ(questoes);
+        questionario.setTitulo(objTD.getTitulo());
+        questionario.setDescricao(objTD.getDescricao());
+        objQ.visualizaQuestionario(questionario);
     }
 
     public static void main(String args[])

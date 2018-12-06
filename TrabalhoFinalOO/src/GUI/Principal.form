@@ -24,17 +24,20 @@
                 <Property name="text" type="java.lang.String" value="Inserir Quest&#xf5;es"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jAlternativa">
+                <MenuItem class="javax.swing.JMenuItem" name="jAberta">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Aberta"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAbertaActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jAberta">
+                <MenuItem class="javax.swing.JMenuItem" name="jAlternativa">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Alternativa"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAbertaActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAlternativaActionPerformed"/>
                   </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jLista">
