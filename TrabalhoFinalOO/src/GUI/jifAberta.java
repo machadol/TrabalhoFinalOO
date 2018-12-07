@@ -1,6 +1,8 @@
 package GUI;
 
 import formulario.Aberta;
+import javax.swing.JOptionPane;
+import tratamento.EnunciadoException;
 
 public class jifAberta extends javax.swing.JInternalFrame
 {
@@ -142,7 +144,17 @@ public class jifAberta extends javax.swing.JInternalFrame
         aberta.setTamResposta(tamResposta);
         aberta.setEnunciado(enunciado);
         setAberta(aberta);
-        dispose();
+        try
+        {
+            this.enunciado = jtfEnunciado.getText();
+            EnunciadoException a = new EnunciadoException();
+            a.tratarenunciado(jtfEnunciado.getText().isEmpty());
+            dispose();
+        }
+        catch(EnunciadoException ad)
+        {
+            JOptionPane.showMessageDialog(null, "Enunciado não informado!");
+        }
     }//GEN-LAST:event_btnCurtaActionPerformed
 
     private void btnLongaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnLongaActionPerformed
@@ -152,7 +164,17 @@ public class jifAberta extends javax.swing.JInternalFrame
         aberta.setTamResposta(tamResposta);
         aberta.setEnunciado(enunciado);
         setAberta(aberta);
-        dispose();
+        try
+        {
+            this.enunciado = jtfEnunciado.getText();
+            EnunciadoException a = new EnunciadoException();
+            a.tratarenunciado(jtfEnunciado.getText().isEmpty());
+            dispose();
+        }
+        catch(EnunciadoException ad)
+        {
+            JOptionPane.showMessageDialog(null, "Enunciado não informado!");
+        }
     }//GEN-LAST:event_btnLongaActionPerformed
 
 

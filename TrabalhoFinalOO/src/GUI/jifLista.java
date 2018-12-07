@@ -4,7 +4,9 @@ import formulario.Item;
 import formulario.Lista;
 import java.util.ArrayList;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import tratamento.EnunciadoException;
 
 public class jifLista extends javax.swing.JInternalFrame
 {
@@ -132,7 +134,17 @@ public class jifLista extends javax.swing.JInternalFrame
         }
         lista.setItemList(itens);
         lista.setEnunciado(enunciado);
-        dispose();
+        try
+        {
+            this.enunciado = jtfEnunciado.getText();
+            EnunciadoException a = new EnunciadoException();
+            a.tratarenunciado(jtfEnunciado.getText().isEmpty());
+            dispose();
+        }
+        catch(EnunciadoException ad)
+        {
+            JOptionPane.showMessageDialog(null, "Enunciado não informado!");
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
     
     private void addLabel()

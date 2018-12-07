@@ -3,9 +3,9 @@ package tratamento;
 
 public class EnunciadoException extends Exception
 {
-    public void tratarenunciado(String Enunciado)throws EnunciadoException {
+    public void tratarenunciado(boolean Enunciado)throws EnunciadoException {
         
-       if(Enunciado == null){
+       if(Enunciado){
            throw new EnunciadoException();
        }else{
            //System.out.println("concluido"); 

@@ -1,6 +1,8 @@
 package GUI;
 
 import formulario.Opcional;
+import javax.swing.JOptionPane;
+import tratamento.EnunciadoException;
 
 public class jifOpcional extends javax.swing.JInternalFrame
 {
@@ -103,9 +105,20 @@ public class jifOpcional extends javax.swing.JInternalFrame
     }//GEN-LAST:event_jtfEnunciadoActionPerformed
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSalvarActionPerformed
     {//GEN-HEADEREND:event_btnSalvarActionPerformed
-        opcional.setEnunciado(jtfEnunciado.getText());
-        opcional.setItem(jtaOpcao.getText());
-        dispose();
+        
+        try
+        {
+            opcional.setEnunciado(jtfEnunciado.getText());
+            opcional.setItem(jtaOpcao.getText());
+            //this.enunciado = jtfEnunciado.getText();
+            EnunciadoException a = new EnunciadoException();
+            a.tratarenunciado(jtfEnunciado.getText().isEmpty());
+            dispose();
+        }
+        catch(EnunciadoException ad)
+        {
+            JOptionPane.showMessageDialog(null, "Enunciado não informado!");
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
