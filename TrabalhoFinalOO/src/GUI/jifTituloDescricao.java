@@ -1,5 +1,9 @@
 package GUI;
 
+import javax.swing.JOptionPane;
+import tratamento.DescricaoException;
+import tratamento.TituloException;
+
 public class jifTituloDescricao extends javax.swing.JInternalFrame
 {
     private String titulo;
@@ -108,9 +112,30 @@ public class jifTituloDescricao extends javax.swing.JInternalFrame
 
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCriarActionPerformed
     {//GEN-HEADEREND:event_btnCriarActionPerformed
-        this.titulo = jtfTitulo.getText();
-        this.descricao = ftaDescricao.getText();
-        dispose();
+        try
+        {
+            this.titulo = jtfTitulo.getText();
+            TituloException a = new TituloException();
+            a.tratartitulo(jtfTitulo.getText().isEmpty());
+            dispose();
+        }
+        catch(TituloException ad)
+        {
+
+            JOptionPane.showMessageDialog(null, "Titulo não informado!", "ERRO",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        try
+        {
+            this.descricao = ftaDescricao.getText();
+            DescricaoException a = new DescricaoException();
+            a.tratardescricao(ftaDescricao.getText().isEmpty());
+            dispose();
+        }
+        catch(DescricaoException ad)
+        {
+            JOptionPane.showMessageDialog(null, "Descrição não informado!", "ERRO",JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnCriarActionPerformed
 
 

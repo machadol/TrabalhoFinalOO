@@ -64,11 +64,15 @@ public class jifQuestionario extends javax.swing.JInternalFrame
 
         jScrollPane2.setViewportView(jPanel1);
 
+        jDescricao.setEditable(false);
+        jDescricao.setBackground(new java.awt.Color(238, 238, 238));
         jDescricao.setColumns(20);
         jDescricao.setLineWrap(true);
         jDescricao.setRows(100);
         jScrollPane1.setViewportView(jDescricao);
 
+        jTitulo.setEditable(false);
+        jTitulo.setBackground(new java.awt.Color(238, 238, 238));
         jTitulo.setColumns(20);
         jTitulo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jTitulo.setLineWrap(true);
@@ -126,14 +130,16 @@ public class jifQuestionario extends javax.swing.JInternalFrame
     private void criaLista(Lista l)
     {
         JComboBox cbLista = new JComboBox();
-        JLabel    enun    =  new JLabel();
-        
+        JTextArea enun = new JTextArea();
+        enun.setBackground(new java.awt.Color(238, 238, 238));
+        enun.setEditable(false);
+        enun.setLineWrap(true);
         enun.setText(Integer.toString(numQuestao)+" - "+l.getEnunciado());
         enun.setLocation(10, pos);
-        enun.setSize(300, 20);
+        enun.setSize(620, 50);
         
-        cbLista.setLocation(10, pos+20);
-        cbLista.setSize(250, 30);
+        cbLista.setLocation(10, pos+50);
+        cbLista.setSize(620, 25);
         cbLista.removeAllItems();
         
         for(int i = 0; i < l.getItemList().size(); i++)
@@ -146,33 +152,36 @@ public class jifQuestionario extends javax.swing.JInternalFrame
         jPanel1.add(cbLista);
         jPanel1.add(enun);
         numQuestao+=1;
-        pos+=50;
+        pos+=75;
     }
     
     private void criaAberta(Aberta a)
     {
-        JLabel enun =  new JLabel();
         JTextArea  respLonga = new JTextArea();
         JTextField respCurta = new JTextField();
+        JTextArea enun = new JTextArea();
         
+        enun.setBackground(new java.awt.Color(238, 238, 238));
+        enun.setEditable(false);
+        enun.setLineWrap(true);
         enun.setLocation(10, pos);
-        enun.setSize(300, 20);
+        enun.setSize(620, 50);
         enun.setText(Integer.toString(numQuestao)+" - "+ a.getEnunciado());
                 
         if(a.getTamResposta())
         {
-            respLonga.setLocation(10, pos+20);
-            respLonga.setSize(540,75);
+            respLonga.setLocation(10, pos+52);
+            respLonga.setSize(620,75);
             respLonga.setLineWrap(true);
             jPanel1.add(respLonga);
-            pos+=95;
+            pos+=130;
         }
         else
         {   
-            respCurta.setLocation(10, pos+20);
-            respCurta.setSize(540, 25);
+            respCurta.setLocation(10, pos+50);
+            respCurta.setSize(620, 25);
             jPanel1.add(respCurta);
-            pos+=45;            
+            pos+=80;            
         }
         
         jPanel1.add(enun);
@@ -186,66 +195,73 @@ public class jifQuestionario extends javax.swing.JInternalFrame
 
         if (al.getExclusiva())
         {
-            JLabel enun      = new JLabel();
+            JTextArea enun = new JTextArea();
             ButtonGroup boxGroup = new ButtonGroup();
-            
+            enun.setBackground(new java.awt.Color(238, 238, 238));
+            enun.setEditable(false);
+            enun.setLineWrap(true);            
             enun.setText(Integer.toString(numQuestao)+" - "+al.getEnunciado());
             enun.setLocation(10, pos);
-            enun.setSize(300,40);
+            enun.setSize(620,50);
             enun.setVisible(true);
             jPanel1.add(enun);
             for (int i = 0; i < al.getItemList().size(); i++)
             {
                 JRadioButton box = new JRadioButton();
                 box.setText(al.getItemList().get(i).getTexto());
-                box.setSize(100,40);
-                box.setLocation(12, posBox+20);
+                box.setSize(600,40);
+                box.setLocation(12, posBox+40);
                 box.setVisible(true);
                 boxGroup.add(box);
                 jPanel1.add(box);
                 posBox+=20;
                 qtdItem+=1;
             }
+            pos+=100+(qtdItem*4);
             numQuestao+=1;
         }
         else
         {
-            JLabel enun   = new JLabel();
+            JTextArea enun = new JTextArea();
             enun.setText(Integer.toString(numQuestao)+" - "+al.getEnunciado());
+            enun.setBackground(new java.awt.Color(238, 238, 238));
+            enun.setEditable(false);
+            enun.setLineWrap(true);            
             enun.setLocation(10, pos);
-            enun.setSize(100,40);
+            enun.setSize(620,50);
             enun.setVisible(true);
             jPanel1.add(enun);
             for (int i = 0; i < al.getItemList().size(); i++)
             {
                 JCheckBox box = new JCheckBox();
                 box.setText(al.getItemList().get(i).getTexto());
-                box.setSize(100,40);
-                box.setLocation(12, posBox+20);
+                box.setSize(600,40);
+                box.setLocation(12, posBox+40);
                 box.setVisible(true);
                 jPanel1.add(box);
                 posBox+=20;
                 qtdItem+=1;
             }
+            pos+=100+(qtdItem*4);
             numQuestao+=1;
         }
-
-        pos+=80+(qtdItem*2);
     }
     
     private void criaOpcional(Opcional op)
     {
-        JLabel enun   = new JLabel();
+        JTextArea enun = new JTextArea();
         JCheckBox box = new JCheckBox();
-
+        enun.setEditable(false);
+        enun.setLineWrap(true);        
+        enun.setBackground(new java.awt.Color(238, 238, 238));
         enun.setText(Integer.toString(numQuestao)+" - "+op.getEnunciado());
         enun.setLocation(10, pos);
-        enun.setSize(100,40);
+        enun.setSize(620,50);
         enun.setVisible(true);
 
         box.setText(op.getItem());
-        box.setSize(100,40);
-        box.setLocation(12, pos+20);
+        box.setSize(620,40);
+        box.setLocation(12, pos+50);
         box.setVisible(true);
         
         jPanel1.add(enun);

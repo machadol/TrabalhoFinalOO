@@ -1,15 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tratamento;
 
-/**
- *
- * @author lucas
- */
-public class EnunciadoException
+public class EnunciadoException extends Exception
 {
-    
+    public void tratarenunciado(String Enunciado)throws EnunciadoException {
+        
+       if(Enunciado == null){
+           throw new EnunciadoException();
+       }else{
+           //System.out.println("concluido"); 
+       }
+   }
 }
