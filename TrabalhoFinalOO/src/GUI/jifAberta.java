@@ -127,7 +127,7 @@ public class jifAberta extends javax.swing.JInternalFrame
                 .addGap(67, 67, 67))
         );
 
-        setBounds(10, 285, 450, 274);
+        setBounds(10, 346, 450, 274);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtfEnunciadoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jtfEnunciadoActionPerformed

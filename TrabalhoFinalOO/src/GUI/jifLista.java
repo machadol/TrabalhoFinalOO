@@ -102,7 +102,7 @@ public class jifLista extends javax.swing.JInternalFrame
                 .addContainerGap(437, Short.MAX_VALUE))
         );
 
-        setBounds(470, 10, 400, 560);
+        setBounds(500, 10, 400, 560);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAddItemActionPerformed

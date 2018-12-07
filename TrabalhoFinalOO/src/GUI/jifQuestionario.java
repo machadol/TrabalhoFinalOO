@@ -3,7 +3,9 @@ package GUI;
 import formulario.Aberta;
 import formulario.Alternativa;
 import formulario.Lista;
+import formulario.Opcional;
 import formulario.Questionario;
+import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -17,7 +19,6 @@ public class jifQuestionario extends javax.swing.JInternalFrame
     private int numQuestao = 1;
     
     private int pos = 10;
-    private int posBox = 10;
     
     public jifQuestionario()
     {
@@ -30,10 +31,12 @@ public class jifQuestionario extends javax.swing.JInternalFrame
     {
 
         jpQuestionario = new javax.swing.JPanel();
-        jTitulo = new javax.swing.JLabel();
-        jDescricao = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jDescricao = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTitulo = new javax.swing.JTextArea();
 
         setClosable(true);
         setIconifiable(true);
@@ -41,12 +44,6 @@ public class jifQuestionario extends javax.swing.JInternalFrame
         setTitle("Questionário");
 
         jpQuestionario.setAutoscrolls(true);
-
-        jTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jTitulo.setText("sada");
-
-        jDescricao.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jDescricao.setText("assssssssssss");
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -58,7 +55,7 @@ public class jifQuestionario extends javax.swing.JInternalFrame
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGap(0, 647, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,34 +64,33 @@ public class jifQuestionario extends javax.swing.JInternalFrame
 
         jScrollPane2.setViewportView(jPanel1);
 
+        jDescricao.setColumns(20);
+        jDescricao.setLineWrap(true);
+        jDescricao.setRows(100);
+        jScrollPane1.setViewportView(jDescricao);
+
+        jTitulo.setColumns(20);
+        jTitulo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jTitulo.setLineWrap(true);
+        jTitulo.setRows(10);
+        jScrollPane3.setViewportView(jTitulo);
+
         javax.swing.GroupLayout jpQuestionarioLayout = new javax.swing.GroupLayout(jpQuestionario);
         jpQuestionario.setLayout(jpQuestionarioLayout);
         jpQuestionarioLayout.setHorizontalGroup(
             jpQuestionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpQuestionarioLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jpQuestionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpQuestionarioLayout.createSequentialGroup()
-                        .addComponent(jDescricao)
-                        .addContainerGap(488, Short.MAX_VALUE))
-                    .addGroup(jpQuestionarioLayout.createSequentialGroup()
-                        .addComponent(jTitulo)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jpQuestionarioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jpQuestionarioLayout.setVerticalGroup(
             jpQuestionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpQuestionarioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTitulo)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDescricao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -108,15 +104,17 @@ public class jifQuestionario extends javax.swing.JInternalFrame
             .addComponent(jpQuestionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setBounds(150, 10, 611, 550);
+        setBounds(150, 10, 675, 630);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jDescricao;
+    private javax.swing.JTextArea jDescricao;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel jTitulo;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTitulo;
     private javax.swing.JPanel jpQuestionario;
     // End of variables declaration//GEN-END:variables
     
@@ -124,9 +122,7 @@ public class jifQuestionario extends javax.swing.JInternalFrame
     {
         jTitulo.setText(questionario.getTitulo());
         jDescricao.setText(questionario.getDescricao());
-        
     }
-    
     private void criaLista(Lista l)
     {
         JComboBox cbLista = new JComboBox();
@@ -134,7 +130,7 @@ public class jifQuestionario extends javax.swing.JInternalFrame
         
         enun.setText(Integer.toString(numQuestao)+" - "+l.getEnunciado());
         enun.setLocation(10, pos);
-        enun.setSize(100, 20);
+        enun.setSize(300, 20);
         
         cbLista.setLocation(10, pos+20);
         cbLista.setSize(250, 30);
@@ -160,12 +156,12 @@ public class jifQuestionario extends javax.swing.JInternalFrame
         JTextField respCurta = new JTextField();
         
         enun.setLocation(10, pos);
-        enun.setSize(100, 20);
+        enun.setSize(300, 20);
         enun.setText(Integer.toString(numQuestao)+" - "+ a.getEnunciado());
                 
         if(a.getTamResposta())
         {
-            respLonga.setLocation(10, pos);
+            respLonga.setLocation(10, pos+20);
             respLonga.setSize(540,75);
             respLonga.setLineWrap(true);
             jPanel1.add(respLonga);
@@ -173,7 +169,7 @@ public class jifQuestionario extends javax.swing.JInternalFrame
         }
         else
         {   
-            respCurta.setLocation(10, pos);
+            respCurta.setLocation(10, pos+20);
             respCurta.setSize(540, 25);
             jPanel1.add(respCurta);
             pos+=45;            
@@ -185,7 +181,34 @@ public class jifQuestionario extends javax.swing.JInternalFrame
     
     private void criaAlternativa(Alternativa al)
     {
-        if (!al.getExclusiva())
+        int qtdItem = 0;
+        int posBox = pos;
+
+        if (al.getExclusiva())
+        {
+            JLabel enun      = new JLabel();
+            ButtonGroup boxGroup = new ButtonGroup();
+            
+            enun.setText(Integer.toString(numQuestao)+" - "+al.getEnunciado());
+            enun.setLocation(10, pos);
+            enun.setSize(300,40);
+            enun.setVisible(true);
+            jPanel1.add(enun);
+            for (int i = 0; i < al.getItemList().size(); i++)
+            {
+                JRadioButton box = new JRadioButton();
+                box.setText(al.getItemList().get(i).getTexto());
+                box.setSize(100,40);
+                box.setLocation(12, posBox+20);
+                box.setVisible(true);
+                boxGroup.add(box);
+                jPanel1.add(box);
+                posBox+=20;
+                qtdItem+=1;
+            }
+            numQuestao+=1;
+        }
+        else
         {
             JLabel enun   = new JLabel();
             enun.setText(Integer.toString(numQuestao)+" - "+al.getEnunciado());
@@ -202,33 +225,33 @@ public class jifQuestionario extends javax.swing.JInternalFrame
                 box.setVisible(true);
                 jPanel1.add(box);
                 posBox+=20;
-            }
-            numQuestao+=1;
-        }
-        else
-        {
-            JLabel enun   = new JLabel();
-            enun.setText(Integer.toString(numQuestao)+" - "+al.getEnunciado());
-            enun.setLocation(10, pos);
-            enun.setSize(100,40);
-            enun.setVisible(true);
-            jPanel1.add(enun);
-            for (int i = 0; i < al.getItemList().size(); i++)
-            {
-                JRadioButton box = new JRadioButton();
-                box.setText(al.getItemList().get(i).getTexto());
-                box.setSize(100,40);
-                box.setLocation(12, posBox+20);
-                box.setVisible(true);
-                jPanel1.add(box);
-                posBox+=20;
+                qtdItem+=1;
             }
             numQuestao+=1;
         }
 
-        pos+=posBox;
+        pos+=80+(qtdItem*2);
     }
     
+    private void criaOpcional(Opcional op)
+    {
+        JLabel enun   = new JLabel();
+        JCheckBox box = new JCheckBox();
+
+        enun.setText(Integer.toString(numQuestao)+" - "+op.getEnunciado());
+        enun.setLocation(10, pos);
+        enun.setSize(100,40);
+        enun.setVisible(true);
+
+        box.setText(op.getItem());
+        box.setSize(100,40);
+        box.setLocation(12, pos+20);
+        box.setVisible(true);
+        
+        jPanel1.add(enun);
+        jPanel1.add(box);
+        numQuestao+=1;
+    }
     
     public void visualizaQuestionario(Questionario q)
     {        
@@ -250,6 +273,10 @@ public class jifQuestionario extends javax.swing.JInternalFrame
             else if (questionario.getArrayListQ().get(i) instanceof Alternativa)
             {
                 criaAlternativa((Alternativa) questionario.getArrayListQ().get(i));
+            }
+            else if (questionario.getArrayListQ().get(i) instanceof Opcional)
+            {
+                criaOpcional((Opcional) questionario.getArrayListQ().get(i));
             }
         }
     }

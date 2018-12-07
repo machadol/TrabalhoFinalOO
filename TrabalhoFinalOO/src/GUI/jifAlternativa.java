@@ -1,6 +1,5 @@
 package GUI;
 
-import formulario.Aberta;
 import formulario.Alternativa;
 import formulario.Item;
 import java.util.ArrayList;
@@ -172,7 +171,7 @@ public class jifAlternativa extends javax.swing.JInternalFrame
                 .addContainerGap(382, Short.MAX_VALUE))
         );
 
-        setBounds(470, 10, 400, 560);
+        setBounds(500, 10, 400, 560);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtfEnunciadoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jtfEnunciadoActionPerformed
@@ -217,6 +216,7 @@ public class jifAlternativa extends javax.swing.JInternalFrame
         }
         alternativa.setItemList(itens);
         alternativa.setEnunciado(enunciado);
+        alternativa.setExclusiva(exclusiva);
         dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
     

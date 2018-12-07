@@ -3,6 +3,7 @@ package GUI;
 import formulario.Aberta;
 import formulario.Alternativa;
 import formulario.Lista;
+import formulario.Opcional;
 import formulario.Questao;
 import formulario.Questionario;
 import java.util.ArrayList;
@@ -12,15 +13,18 @@ public class Principal extends javax.swing.JFrame
     ArrayList<Questao> questoes= new ArrayList<>();
     
     Questionario questionario = new Questionario();
-    Lista lista               = new Lista();
     Aberta aberta             = new Aberta();
     Alternativa alternativa   = new Alternativa();
+    Lista lista               = new Lista();
+    Opcional opcional         = new Opcional();
     
     jifTituloDescricao objTD;
     jifQuestionario    objQ;
-    jifLista  objLista;
-    jifAberta objAberta;
+    jifAberta      objAberta;
     jifAlternativa objAlternativa;
+    jifLista       objLista;
+    jifOpcional    objOpcional;
+    
     public Principal()
     {
         initComponents();
@@ -51,11 +55,11 @@ public class Principal extends javax.swing.JFrame
         jdpPrincipal.setLayout(jdpPrincipalLayout);
         jdpPrincipalLayout.setHorizontalGroup(
             jdpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 880, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
         jdpPrincipalLayout.setVerticalGroup(
             jdpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 579, Short.MAX_VALUE)
+            .addGap(0, 659, Short.MAX_VALUE)
         );
 
         jMenu.setText("Menu");
@@ -141,7 +145,7 @@ public class Principal extends javax.swing.JFrame
             .addComponent(jdpPrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        setSize(new java.awt.Dimension(890, 630));
+        setSize(new java.awt.Dimension(910, 710));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -171,7 +175,11 @@ public class Principal extends javax.swing.JFrame
     
     private void jOpcionalActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jOpcionalActionPerformed
     {//GEN-HEADEREND:event_jOpcionalActionPerformed
-        // TODO add your handling code here:
+        objOpcional = new jifOpcional();
+        jdpPrincipal.add(objOpcional);
+        objOpcional.setVisible(true);
+        this.opcional = objOpcional.getOpcional();
+        questoes.add(opcional);
     }//GEN-LAST:event_jOpcionalActionPerformed
 
     private void jAlternativaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jAlternativaActionPerformed
