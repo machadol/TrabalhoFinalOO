@@ -7,6 +7,7 @@ public class jifAberta extends javax.swing.JInternalFrame
     private Aberta aberta = new Aberta();
     private boolean tamResposta;
     private String enunciado;
+    
 
     public boolean getTamResposta()
     {

@@ -81,7 +81,7 @@ public class jifLista extends javax.swing.JInternalFrame
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelEnunciado)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                         .addComponent(btnAddItem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

@@ -1,6 +1,7 @@
 package GUI;
 
 import formulario.Aberta;
+import formulario.Alternativa;
 import formulario.Lista;
 import formulario.Questao;
 import formulario.Questionario;
@@ -11,13 +12,15 @@ public class Principal extends javax.swing.JFrame
     ArrayList<Questao> questoes= new ArrayList<>();
     
     Questionario questionario = new Questionario();
-    Lista lista = new Lista();
-    Aberta aberta = new Aberta();
+    Lista lista               = new Lista();
+    Aberta aberta             = new Aberta();
+    Alternativa alternativa   = new Alternativa();
     
     jifTituloDescricao objTD;
     jifQuestionario    objQ;
     jifLista  objLista;
     jifAberta objAberta;
+    jifAlternativa objAlternativa;
     public Principal()
     {
         initComponents();
@@ -173,7 +176,11 @@ public class Principal extends javax.swing.JFrame
 
     private void jAlternativaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jAlternativaActionPerformed
     {//GEN-HEADEREND:event_jAlternativaActionPerformed
-
+        objAlternativa = new jifAlternativa();
+        jdpPrincipal.add(objAlternativa);
+        objAlternativa.setVisible(true);
+        this.alternativa= objAlternativa.getAlternativa();
+        questoes.add(alternativa);
     }//GEN-LAST:event_jAlternativaActionPerformed
 
     private void jAbertaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jAbertaActionPerformed
