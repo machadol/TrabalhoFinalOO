@@ -248,7 +248,7 @@ public class Principal extends javax.swing.JFrame
                
                 for (int j = 0; j < alt.getItemList().size(); j++)
                 {
-                    gravararq.printf(alt.getItemList().get(j).getTexto()+"\n");
+                    gravararq.printf("    "+alt.getItemList().get(j).getTexto()+"\n");
                 }
             }
             else if (questionario.getArrayListQ().get(i) instanceof Opcional)
