@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import tratamento.EnunciadoException;
+import tratamento.AlternativasNaoInformadasException;
+import tratamento.EnunciadoNaoInformadoException;
 
 public class jifLista extends javax.swing.JInternalFrame
 {
@@ -143,7 +144,7 @@ public class jifLista extends javax.swing.JInternalFrame
             }
             addItem();
         }
-        catch(EnunciadoException e)
+        catch(EnunciadoNaoInformadoException e)
         {
             JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
@@ -154,16 +155,16 @@ public class jifLista extends javax.swing.JInternalFrame
         try
         {
             verificaEnunciado();
+            verificaItens();
             if(enunItem != null)
             {
                 Item i = new Item();
                 i.setTexto(enunItem.getText());
                 itens.add(i);       
             }
-            lista.setItemList(itens);
             dispose();
         }
-        catch(EnunciadoException e)
+        catch(EnunciadoNaoInformadoException | AlternativasNaoInformadasException e)
         {
             JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
@@ -193,19 +194,30 @@ public class jifLista extends javax.swing.JInternalFrame
         pos += 30;
     }
     
-    
     private void verificaEnunciado()
     {
         if (jtfEnunciado.getText().isEmpty())
         {
-            throw new EnunciadoException("Enunciado não informado!");
+            throw new EnunciadoNaoInformadoException("Enunciado não informado!");
         }
         else
         {
             lista.setEnunciado(jtfEnunciado.getText());
         }
     }
-
+    
+    private void verificaItens()
+    {
+        if (itens.isEmpty())
+        {
+            throw new AlternativasNaoInformadasException("Nenhum item de resposta foi adcionado!");
+        }
+        else
+        {
+           lista.setItemList(itens);
+        }
+    }
+            
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddItem;
     private javax.swing.JButton btnSalvar;

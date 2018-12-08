@@ -3,7 +3,7 @@ package GUI;
 import formulario.Aberta;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import tratamento.EnunciadoException;
+import tratamento.EnunciadoNaoInformadoException;
 
 public class jifAberta extends javax.swing.JInternalFrame
 {
@@ -111,7 +111,7 @@ public class jifAberta extends javax.swing.JInternalFrame
             aberta.setTamResposta(false);
             dispose();
         }
-        catch(EnunciadoException e)
+        catch(EnunciadoNaoInformadoException e)
         {
             JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
@@ -125,7 +125,7 @@ public class jifAberta extends javax.swing.JInternalFrame
             aberta.setTamResposta(true);
             dispose();
         }
-        catch(EnunciadoException e)
+        catch(EnunciadoNaoInformadoException e)
         {
             JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
@@ -135,7 +135,7 @@ public class jifAberta extends javax.swing.JInternalFrame
     {
         if (jtfEnunciado.getText().isEmpty())
         {
-            throw new EnunciadoException("Enunciado não informado!");
+            throw new EnunciadoNaoInformadoException("Enunciado não informado!");
         }
         else
         {

@@ -1,8 +1,8 @@
 package GUI;
 
 import javax.swing.JOptionPane;
-import tratamento.DescricaoException;
-import tratamento.TituloException;
+import tratamento.DescricaoObrigatoriaNaoInformadaException;
+import tratamento.TituloObrigatoriaNaoInformadaException;
 
 public class jifTituloDescricao extends javax.swing.JInternalFrame
 {
@@ -36,7 +36,6 @@ public class jifTituloDescricao extends javax.swing.JInternalFrame
         ftaDescricao = new javax.swing.JTextArea();
         btnCriar = new javax.swing.JButton();
 
-        setClosable(true);
         setResizable(true);
         setTitle("Novo Questionário");
 
@@ -105,9 +104,9 @@ public class jifTituloDescricao extends javax.swing.JInternalFrame
             verificaTituloDescricao();
             dispose();
         }
-        catch(TituloException | DescricaoException e)
+        catch(TituloObrigatoriaNaoInformadaException | DescricaoObrigatoriaNaoInformadaException e)
         {
-            JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnCriarActionPerformed
     
@@ -115,7 +114,7 @@ public class jifTituloDescricao extends javax.swing.JInternalFrame
     {
         if (jtfTitulo.getText().isEmpty())
         {
-            throw new TituloException("Titulo não informado!");
+            throw new TituloObrigatoriaNaoInformadaException("Titulo não informado!");
         }
         else
         {
@@ -124,7 +123,7 @@ public class jifTituloDescricao extends javax.swing.JInternalFrame
             
         if (ftaDescricao.getText().isEmpty())
         {
-            throw new DescricaoException("Descrição não informado!");
+            throw new DescricaoObrigatoriaNaoInformadaException("Descrição não informado!");
         }
         else
         {

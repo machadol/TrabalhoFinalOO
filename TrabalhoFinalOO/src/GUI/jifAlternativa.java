@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import tratamento.EnunciadoException;
+import tratamento.AlternativasNaoInformadasException;
+import tratamento.EnunciadoNaoInformadoException;
 
 public class jifAlternativa extends javax.swing.JInternalFrame
 {
@@ -162,7 +163,7 @@ public class jifAlternativa extends javax.swing.JInternalFrame
 
             addItem();
         }
-        catch(EnunciadoException e)
+        catch(EnunciadoNaoInformadoException e)
         {
             JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
@@ -173,17 +174,17 @@ public class jifAlternativa extends javax.swing.JInternalFrame
         try
         {
             verificaEnunciado();
+            verificaItens();
             if(enunItem != null)
             {
                 Item i = new Item();
                 i.setTexto(enunItem.getText());
                 itens.add(i);       
             }
-            alternativa.setItemList(itens);
             alternativa.setExclusiva(btnGroup.isSelected(jrbSim.getModel()));
             dispose();
         }
-        catch(EnunciadoException e)
+        catch(EnunciadoNaoInformadoException | AlternativasNaoInformadasException e)
         {
             JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
@@ -217,14 +218,25 @@ public class jifAlternativa extends javax.swing.JInternalFrame
     {
         if (jtfEnunciado.getText().isEmpty())
         {
-            throw new EnunciadoException("Enunciado não informado!");
+            throw new EnunciadoNaoInformadoException("Enunciado não informado!");
         }
         else
         {
             alternativa.setEnunciado(jtfEnunciado.getText());
         }
     }
-
+    
+    private void verificaItens()
+    {
+        if (itens.isEmpty())
+        {
+            throw new AlternativasNaoInformadasException("Nenhum item de resposta foi adcionado!");
+        }
+        else
+        {
+            alternativa.setItemList(itens);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddItem;
     private javax.swing.ButtonGroup btnGroup;

@@ -1,8 +1,8 @@
 package tratamento;
 
-public class EnunciadoException extends RuntimeException
+public class EnunciadoNaoInformadoException extends RuntimeException
 {
-    public EnunciadoException(String msg)
+    public EnunciadoNaoInformadoException(String msg)
     {
         super(msg);
     }

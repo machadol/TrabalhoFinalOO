@@ -1,8 +1,8 @@
 package tratamento;
 
-public class DescricaoException extends RuntimeException
+public class DescricaoObrigatoriaNaoInformadaException extends RuntimeException
 {
-    public DescricaoException(String msg)
+    public DescricaoObrigatoriaNaoInformadaException(String msg)
     {
         super(msg);
     }

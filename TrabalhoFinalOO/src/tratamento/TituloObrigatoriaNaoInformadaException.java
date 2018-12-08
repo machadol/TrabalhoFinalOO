@@ -1,8 +1,8 @@
 package tratamento;
 
-public class TituloException extends RuntimeException
+public class TituloObrigatoriaNaoInformadaException extends RuntimeException
 {
-    public TituloException(String msg)
+    public TituloObrigatoriaNaoInformadaException(String msg)
     {
         super(msg);
     }   

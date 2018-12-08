@@ -10,22 +10,23 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class Principal extends javax.swing.JFrame
 {
-    ArrayList<Questao> questoes= new ArrayList<>();
-    Questionario questionario = new Questionario();
-    Aberta aberta             = new Aberta();
-    Alternativa alternativa   = new Alternativa();
-    Lista lista               = new Lista();
-    Opcional opcional         = new Opcional();
-    
+    ArrayList<Questao> questoes     = new ArrayList<>();
+    Questionario       questionario = new Questionario();
+    Aberta             aberta       = new Aberta();
+    Alternativa        alternativa  = new Alternativa();
+    Lista              lista        = new Lista();
+    Opcional           opcional     = new Opcional();
+     
     jifTituloDescricao objTD;
     jifQuestionario    objQ;
-    jifAberta      objAberta;
-    jifAlternativa objAlternativa;
-    jifLista       objLista;
-    jifOpcional    objOpcional;
+    jifAberta          objAberta;
+    jifAlternativa     objAlternativa;
+    jifLista           objLista;
+    jifOpcional        objOpcional;
     
     public Principal()
     {
@@ -161,16 +162,24 @@ public class Principal extends javax.swing.JFrame
     private void jMenuVisualizarQuestionarioActionPerformed(java.awt.event.ActionEvent evt)                                                            
     {                                                                
         objQ = new jifQuestionario();
-        jdpPrincipal.add(objQ);
-        enviaQuestionario();
         try
         {
+            questionario.setArrayListQ(questoes);
+            questionario.setTitulo(objTD.getTitulo());
+            questionario.setDescricao(objTD.getDescricao());
+            objQ.visualizaQuestionario(questionario);
+            objQ.setVisible(true);        
+            jdpPrincipal.add(objQ);
             exportar();
-        } catch (IOException ex)
+        }
+        catch(NullPointerException e)
+        {
+            JOptionPane.showMessageDialog(null, "Crie um novo questionário!", null, JOptionPane.WARNING_MESSAGE);
+        } 
+        catch (IOException ex)
         {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        objQ.setVisible(true);        
     }                                                           
 
     private void jListaActionPerformed(java.awt.event.ActionEvent evt)                                       
@@ -208,15 +217,6 @@ public class Principal extends javax.swing.JFrame
         this.aberta = objAberta.getAberta();
         questoes.add(aberta);
     }                                       
-    
-    
-    private void enviaQuestionario()
-    {
-        questionario.setArrayListQ(questoes);
-        questionario.setTitulo(objTD.getTitulo());
-        questionario.setDescricao(objTD.getDescricao());
-        objQ.visualizaQuestionario(questionario);
-    }
     
     public void exportar() throws IOException
     {

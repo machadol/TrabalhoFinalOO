@@ -2,7 +2,8 @@ package GUI;
 
 import formulario.Opcional;
 import javax.swing.JOptionPane;
-import tratamento.EnunciadoException;
+import tratamento.AlternativasNaoInformadasException;
+import tratamento.EnunciadoNaoInformadoException;
 
 public class jifOpcional extends javax.swing.JInternalFrame
 {
@@ -97,10 +98,10 @@ public class jifOpcional extends javax.swing.JInternalFrame
         try
         {
             verificaEnunciado();
-            opcional.setItem(jtaOpcao.getText());
+            verificaOpcao();
             dispose();
         }
-        catch(EnunciadoException e)
+        catch(EnunciadoNaoInformadoException | AlternativasNaoInformadasException e)
         {
             JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
@@ -110,11 +111,23 @@ public class jifOpcional extends javax.swing.JInternalFrame
     {
         if (jtfEnunciado.getText().isEmpty())
         {
-            throw new EnunciadoException("Enunciado não informado!");
+            throw new EnunciadoNaoInformadoException("Enunciado não informado!");
         }
         else
         {
             opcional.setEnunciado(jtfEnunciado.getText());
+        }
+    }
+    
+    private void verificaOpcao()
+    {
+        if (jtaOpcao.getText().isEmpty())
+        {
+            throw new AlternativasNaoInformadasException("Texto da opção não informado!");
+        }
+        else
+        {
+            opcional.setItem(jtaOpcao.getText());
         }
     }
     
