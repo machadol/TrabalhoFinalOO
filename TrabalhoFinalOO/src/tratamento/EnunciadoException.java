@@ -1,14 +1,9 @@
-
 package tratamento;
 
-public class EnunciadoException extends Exception
+public class EnunciadoException extends RuntimeException
 {
-    public void tratarenunciado(boolean Enunciado)throws EnunciadoException {
-        
-       if(Enunciado){
-           throw new EnunciadoException();
-       }else{
-           //System.out.println("concluido"); 
-       }
-   }
+    public EnunciadoException(String msg)
+    {
+        super(msg);
+    }
 }

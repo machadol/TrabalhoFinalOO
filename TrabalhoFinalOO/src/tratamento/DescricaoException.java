@@ -1,15 +1,9 @@
-
 package tratamento;
 
-
-public class DescricaoException extends Exception
+public class DescricaoException extends RuntimeException
 {
-    public void tratardescricao(boolean Descricao)throws DescricaoException 
+    public DescricaoException(String msg)
     {
-        
-       if(Descricao)
-       {
-           throw new DescricaoException();
-       }
-   }
+        super(msg);
+    }
 }

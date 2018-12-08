@@ -30,18 +30,11 @@ public class jifOpcional extends javax.swing.JInternalFrame
         jtaOpcao = new javax.swing.JTextArea();
         btnSalvar = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("Questão Opcional");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Enunciado");
-
-        jtfEnunciado.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jtfEnunciadoActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -99,28 +92,32 @@ public class jifOpcional extends javax.swing.JInternalFrame
         setBounds(10, 346, 450, 274);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfEnunciadoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jtfEnunciadoActionPerformed
-    {//GEN-HEADEREND:event_jtfEnunciadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfEnunciadoActionPerformed
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSalvarActionPerformed
     {//GEN-HEADEREND:event_btnSalvarActionPerformed
-        
         try
         {
-            opcional.setEnunciado(jtfEnunciado.getText());
+            verificaEnunciado();
             opcional.setItem(jtaOpcao.getText());
-            //this.enunciado = jtfEnunciado.getText();
-            EnunciadoException a = new EnunciadoException();
-            a.tratarenunciado(jtfEnunciado.getText().isEmpty());
             dispose();
         }
-        catch(EnunciadoException ad)
+        catch(EnunciadoException e)
         {
-            JOptionPane.showMessageDialog(null, "Enunciado não informado!");
+            JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
-
+  
+    private void verificaEnunciado()
+    {
+        if (jtfEnunciado.getText().isEmpty())
+        {
+            throw new EnunciadoException("Enunciado não informado!");
+        }
+        else
+        {
+            opcional.setEnunciado(jtfEnunciado.getText());
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;

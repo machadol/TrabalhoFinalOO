@@ -36,19 +36,12 @@ public class jifTituloDescricao extends javax.swing.JInternalFrame
         ftaDescricao = new javax.swing.JTextArea();
         btnCriar = new javax.swing.JButton();
 
+        setClosable(true);
         setResizable(true);
         setTitle("Novo Questionário");
 
         quetionarioTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         quetionarioTitulo.setText("Título");
-
-        jtfTitulo.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jtfTituloActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Descrição");
@@ -105,39 +98,39 @@ public class jifTituloDescricao extends javax.swing.JInternalFrame
         setBounds(10, 10, 450, 265);
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jtfTituloActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jtfTituloActionPerformed
-    {//GEN-HEADEREND:event_jtfTituloActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfTituloActionPerformed
-
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCriarActionPerformed
     {//GEN-HEADEREND:event_btnCriarActionPerformed
         try
         {
-            this.titulo = jtfTitulo.getText();
-            TituloException a = new TituloException();
-            a.tratartitulo(jtfTitulo.getText().isEmpty());
+            verificaTituloDescricao();
             dispose();
         }
-        catch(TituloException ad)
+        catch(TituloException | DescricaoException e)
         {
-
-            JOptionPane.showMessageDialog(null, "Titulo não informado!", "ERRO",JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        try
-        {
-            this.descricao = ftaDescricao.getText();
-            DescricaoException a = new DescricaoException();
-            a.tratardescricao(ftaDescricao.getText().isEmpty());
-            dispose();
-        }
-        catch(DescricaoException ad)
-        {
-            JOptionPane.showMessageDialog(null, "Descrição não informado!", "ERRO",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnCriarActionPerformed
-
+    
+    private void verificaTituloDescricao()
+    {
+        if (jtfTitulo.getText().isEmpty())
+        {
+            throw new TituloException("Titulo não informado!");
+        }
+        else
+        {
+            this.titulo = jtfTitulo.getText();
+        }
+            
+        if (ftaDescricao.getText().isEmpty())
+        {
+            throw new DescricaoException("Descrição não informado!");
+        }
+        else
+        {
+            this.descricao = ftaDescricao.getText();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriar;

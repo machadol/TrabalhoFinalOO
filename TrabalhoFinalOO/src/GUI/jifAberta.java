@@ -2,34 +2,12 @@ package GUI;
 
 import formulario.Aberta;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import tratamento.EnunciadoException;
 
 public class jifAberta extends javax.swing.JInternalFrame
 {
     private Aberta aberta = new Aberta();
-    private boolean tamResposta;
-    private String enunciado;
-    
-
-    public boolean getTamResposta()
-    {
-        return tamResposta;
-    }
-
-    public void setTamResposta(boolean tamResposta)
-    {
-        this.tamResposta = tamResposta;
-    }
-
-    public String getEnunciado()
-    {
-        return enunciado;
-    }
-
-    public void setEnunciado(String enunciado)
-    {
-        this.enunciado = enunciado;
-    }
 
     public Aberta getAberta()
     {
@@ -58,18 +36,11 @@ public class jifAberta extends javax.swing.JInternalFrame
         jLabel2 = new javax.swing.JLabel();
         btnLonga = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("Questão Aberta");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Enunciado");
-
-        jtfEnunciado.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jtfEnunciadoActionPerformed(evt);
-            }
-        });
 
         btnCurta.setText("Curta");
         btnCurta.addActionListener(new java.awt.event.ActionListener()
@@ -132,51 +103,45 @@ public class jifAberta extends javax.swing.JInternalFrame
         setBounds(10, 346, 450, 274);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfEnunciadoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jtfEnunciadoActionPerformed
-    {//GEN-HEADEREND:event_jtfEnunciadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfEnunciadoActionPerformed
-
     private void btnCurtaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCurtaActionPerformed
     {//GEN-HEADEREND:event_btnCurtaActionPerformed
-        setTamResposta(false);
-        setEnunciado(jtfEnunciado.getText());
-        aberta.setTamResposta(tamResposta);
-        aberta.setEnunciado(enunciado);
-        setAberta(aberta);
         try
         {
-            this.enunciado = jtfEnunciado.getText();
-            EnunciadoException a = new EnunciadoException();
-            a.tratarenunciado(jtfEnunciado.getText().isEmpty());
+            verificaEnunciado();
+            aberta.setTamResposta(false);
             dispose();
         }
-        catch(EnunciadoException ad)
+        catch(EnunciadoException e)
         {
-            JOptionPane.showMessageDialog(null, "Enunciado não informado!");
+            JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnCurtaActionPerformed
 
     private void btnLongaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnLongaActionPerformed
     {//GEN-HEADEREND:event_btnLongaActionPerformed
-        setTamResposta(true);
-        setEnunciado(jtfEnunciado.getText());
-        aberta.setTamResposta(tamResposta);
-        aberta.setEnunciado(enunciado);
-        setAberta(aberta);
         try
         {
-            this.enunciado = jtfEnunciado.getText();
-            EnunciadoException a = new EnunciadoException();
-            a.tratarenunciado(jtfEnunciado.getText().isEmpty());
+            verificaEnunciado();
+            aberta.setTamResposta(true);
             dispose();
         }
-        catch(EnunciadoException ad)
+        catch(EnunciadoException e)
         {
-            JOptionPane.showMessageDialog(null, "Enunciado não informado!");
+            JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnLongaActionPerformed
-
+    
+    private void verificaEnunciado()
+    {
+        if (jtfEnunciado.getText().isEmpty())
+        {
+            throw new EnunciadoException("Enunciado não informado!");
+        }
+        else
+        {
+            aberta.setEnunciado(jtfEnunciado.getText());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCurta;

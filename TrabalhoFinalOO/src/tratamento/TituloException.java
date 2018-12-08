@@ -1,12 +1,9 @@
 package tratamento;
 
-public class TituloException extends Exception
+public class TituloException extends RuntimeException
 {
-    public void tratartitulo(boolean Titulo)throws TituloException 
+    public TituloException(String msg)
     {
-       if(Titulo)
-       {
-           throw new TituloException();
-       }
-    }
+        super(msg);
+    }   
 }

@@ -7,18 +7,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import tratamento.EnunciadoException;
-import tratamento.TituloException;
 
 public class jifAlternativa extends javax.swing.JInternalFrame
 {
-    private int pos = 120;
+    private int pos = 5;
     private int numIndice = 1;
-
     JTextField enunItem;
-    
     private Alternativa alternativa = new Alternativa();
-    private boolean exclusiva;
-    private String enunciado;
     private ArrayList<Item> itens = new ArrayList<>();
 
     public Alternativa getAlternativa()
@@ -31,28 +26,6 @@ public class jifAlternativa extends javax.swing.JInternalFrame
         this.alternativa = alternativa;
     }
 
-    public boolean getExclusiva()
-    {
-        return exclusiva;
-    }
-
-    public void setExclusiva(boolean exclusiva)
-    {
-        this.exclusiva = exclusiva;
-    }
-
-    public String getEnunciado()
-    {
-        return enunciado;
-    }
-
-    public void setEnunciado(String enunciado)
-    {
-        this.enunciado = enunciado;
-    }
-
-
-
     public jifAlternativa()
     {
         initComponents();
@@ -63,48 +36,26 @@ public class jifAlternativa extends javax.swing.JInternalFrame
     private void initComponents()
     {
 
+        btnGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jtfEnunciado = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        btnExclusiva = new javax.swing.JButton();
-        btnNExclusiva = new javax.swing.JButton();
         btnAddItem = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jpItens = new javax.swing.JPanel();
+        jrbSim = new javax.swing.JRadioButton();
+        jrbNao = new javax.swing.JRadioButton();
 
+        setClosable(true);
         setTitle("Questão Alternativa");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Enunciado");
 
-        jtfEnunciado.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jtfEnunciadoActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Selecione o tipo de alternativa:");
-
-        btnExclusiva.setText("Exclusiva");
-        btnExclusiva.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnExclusivaActionPerformed(evt);
-            }
-        });
-
-        btnNExclusiva.setText("Não Exclusiva");
-        btnNExclusiva.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnNExclusivaActionPerformed(evt);
-            }
-        });
+        jLabel2.setText("Os itens serão do tipo exclusiva?");
 
         btnAddItem.setText("Adicionar Item");
         btnAddItem.addActionListener(new java.awt.event.ActionListener()
@@ -124,146 +75,166 @@ public class jifAlternativa extends javax.swing.JInternalFrame
             }
         });
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setToolTipText("");
+        jScrollPane1.setAutoscrolls(true);
+
+        javax.swing.GroupLayout jpItensLayout = new javax.swing.GroupLayout(jpItens);
+        jpItens.setLayout(jpItensLayout);
+        jpItensLayout.setHorizontalGroup(
+            jpItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 387, Short.MAX_VALUE)
+        );
+        jpItensLayout.setVerticalGroup(
+            jpItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(jpItens);
+
+        btnGroup.add(jrbSim);
+        jrbSim.setSelected(true);
+        jrbSim.setText("Sim");
+
+        btnGroup.add(jrbNao);
+        jrbNao.setText("Não");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtfEnunciado)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAddItem)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSalvar))
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnExclusiva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnNExclusiva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnAddItem)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnSalvar))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jrbSim)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jrbNao)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtfEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnExclusiva))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel2)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSalvar)
-                            .addComponent(btnAddItem)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(btnNExclusiva)))
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jrbSim)
+                    .addComponent(jrbNao))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddItem)
+                    .addComponent(btnSalvar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
         );
 
         setBounds(500, 10, 400, 560);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfEnunciadoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jtfEnunciadoActionPerformed
-    {//GEN-HEADEREND:event_jtfEnunciadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfEnunciadoActionPerformed
-
-    private void btnExclusivaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnExclusivaActionPerformed
-    {//GEN-HEADEREND:event_btnExclusivaActionPerformed
-        setExclusiva(true);
-    }//GEN-LAST:event_btnExclusivaActionPerformed
-
-    private void btnNExclusivaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnNExclusivaActionPerformed
-    {//GEN-HEADEREND:event_btnNExclusivaActionPerformed
-        setExclusiva(false);
-    }//GEN-LAST:event_btnNExclusivaActionPerformed
-
     private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAddItemActionPerformed
     {//GEN-HEADEREND:event_btnAddItemActionPerformed
-        if(numIndice == 1)
+        try
         {
-           this.enunciado = jtfEnunciado.getText();
-        }
+            verificaEnunciado();
+            if(enunItem != null)
+            {
+                Item i = new Item();
+                i.setTexto(enunItem.getText());
+                itens.add(i);       
+            }
 
-        if(enunItem != null)
-        {
-            Item i = new Item();
-            i.setTexto(enunItem.getText());
-            itens.add(i);       
+            addItem();
         }
-        addLabel();
-        addTextField();
+        catch(EnunciadoException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnAddItemActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSalvarActionPerformed
     {//GEN-HEADEREND:event_btnSalvarActionPerformed
-      if(enunItem != null)
+        try
         {
-            Item i = new Item();
-            i.setTexto(enunItem.getText());
-            itens.add(i);       
-        }
-        alternativa.setItemList(itens);
-        alternativa.setEnunciado(enunciado);
-        alternativa.setExclusiva(exclusiva);
-       try
-        {
-            this.enunciado = jtfEnunciado.getText();
-            EnunciadoException a = new EnunciadoException();
-            a.tratarenunciado(jtfEnunciado.getText().isEmpty());
+            verificaEnunciado();
+            if(enunItem != null)
+            {
+                Item i = new Item();
+                i.setTexto(enunItem.getText());
+                itens.add(i);       
+            }
+            alternativa.setItemList(itens);
+            alternativa.setExclusiva(btnGroup.isSelected(jrbSim.getModel()));
             dispose();
         }
-        catch(EnunciadoException ad)
+        catch(EnunciadoException e)
         {
-            JOptionPane.showMessageDialog(null, "Enunciado não informado!");
+            JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
     
-    private void addLabel()
+  private void addItem()
     {
-        pos += 25;
         JLabel indice = new JLabel();
+        enunItem      = new JTextField();
+        
         indice.setText(Integer.toString(numIndice));
-        indice.setSize(100,40);
+        indice.setSize(100,25);
         indice.setLocation(12, pos);
-        numIndice += 1;
-        getContentPane().add(indice);
         indice.setVisible(true);
-        initComponents();        
-    }
-    
-    private void addTextField()
-    {
-        pos += 9;
-        enunItem = new JTextField();
+
         enunItem.setSize(200,25);
         enunItem.setLocation(35, pos);
-        getContentPane().add(enunItem);
         enunItem.setVisible(true);
-        initComponents();
-    }    
+        
+        jpItens.add(enunItem);
+        jpItens.repaint();
+
+        jpItens.add(indice);
+        jpItens.repaint();
+
+        numIndice += 1;
+        pos += 30;
+    }
+    
+    private void verificaEnunciado()
+    {
+        if (jtfEnunciado.getText().isEmpty())
+        {
+            throw new EnunciadoException("Enunciado não informado!");
+        }
+        else
+        {
+            alternativa.setEnunciado(jtfEnunciado.getText());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddItem;
-    private javax.swing.JButton btnExclusiva;
-    private javax.swing.JButton btnNExclusiva;
+    private javax.swing.ButtonGroup btnGroup;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jpItens;
+    private javax.swing.JRadioButton jrbNao;
+    private javax.swing.JRadioButton jrbSim;
     private javax.swing.JTextField jtfEnunciado;
     // End of variables declaration//GEN-END:variables
 }
