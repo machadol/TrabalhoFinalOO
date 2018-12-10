@@ -2,15 +2,15 @@ package formulario;
 
 public class Opcional extends Questao
 {
-    private String Item;
+    private Item item = new Item();
 
     public String getItem()
     {
-        return Item;
+        return item.getTexto();
     }
 
     public void setItem(String Item)
     {
-        this.Item = Item;
+        item.setTexto(Item);
     }
 }

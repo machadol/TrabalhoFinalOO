@@ -2,7 +2,7 @@ package GUI;
 
 import javax.swing.JOptionPane;
 import tratamento.DescricaoObrigatoriaNaoInformadaException;
-import tratamento.TituloObrigatoriaNaoInformadaException;
+import tratamento.TituloObrigatorioNaoInformadaException;
 
 public class jifTituloDescricao extends javax.swing.JInternalFrame
 {
@@ -104,7 +104,7 @@ public class jifTituloDescricao extends javax.swing.JInternalFrame
             verificaTituloDescricao();
             dispose();
         }
-        catch(TituloObrigatoriaNaoInformadaException | DescricaoObrigatoriaNaoInformadaException e)
+        catch(TituloObrigatorioNaoInformadaException | DescricaoObrigatoriaNaoInformadaException e)
         {
             JOptionPane.showMessageDialog(null, e.getMessage(), null, JOptionPane.WARNING_MESSAGE);
         }
@@ -114,7 +114,7 @@ public class jifTituloDescricao extends javax.swing.JInternalFrame
     {
         if (jtfTitulo.getText().isEmpty())
         {
-            throw new TituloObrigatoriaNaoInformadaException("Titulo não informado!");
+            throw new TituloObrigatorioNaoInformadaException("Titulo não informado!");
         }
         else
         {
